@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +21,18 @@ class Role
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+//    /**
+//     * Many Users have Many Groups.
+//     * @ManyToMany(targetEntity="User", inversedBy="roles")
+//     * @JoinTable(name="user_role")
+//     */
+//    private $users;
+
+    public function __construct()
+    {
+//        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {

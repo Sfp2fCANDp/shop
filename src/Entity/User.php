@@ -24,9 +24,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    /**
      * Many Users have Many Roles.
      * @ORM\ManyToMany(targetEntity="Role")
      * @ORM\JoinTable(name="user_role",
@@ -90,11 +87,13 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+//        $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
+//        var_dump($roles);
         $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+//        dd();
+//die;
+        return $roles;
     }
 
     public function setRoles(array $roles): self
