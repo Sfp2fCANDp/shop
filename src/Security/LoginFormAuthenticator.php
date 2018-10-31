@@ -66,7 +66,7 @@
 
         public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
         {
-            dd('Homepage');
+            //dd('Homepage');
             return new RedirectResponse($this->router->generate('app_login'));
         }
 
