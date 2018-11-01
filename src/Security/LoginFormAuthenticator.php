@@ -16,12 +16,13 @@
     use Symfony\Component\Security\Csrf\CsrfToken;
     use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
     use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+    use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 
 
     class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
-
+        use TargetPathTrait;
         /**
          * @var UserRepository
          */
@@ -93,6 +94,9 @@
 
         public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
         {
+            if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+                return new RedirectResponse($targetPath);
+            }
             //dd('Homepage');
             return new RedirectResponse($this->router->generate('app_login'));
         }
