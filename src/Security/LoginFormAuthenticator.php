@@ -61,6 +61,7 @@
 
         public function getCredentials(Request $request)
         {
+            //dd($request);
             //Remember $email
             // *
             $credentials = [
@@ -78,27 +79,29 @@
 
         public function getUser($credentials, UserProviderInterface $userProvider)
         {
-//            dd($credentials);
             $token = new CsrfToken('authenticate',$credentials['csrf_token']);
             if(!$this->csrfTokenManager->isTokenValid($token))
             {
                 throw new InvalidCsrfTokenException();
             }
             return $this->userRepository->findOneBy(['email' => $credentials['email']]);
+
         }
 
         public function checkCredentials($credentials, UserInterface $user)
         {
+
             return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
         }
 
         public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
         {
+
             if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
                 return new RedirectResponse($targetPath);
             }
             //dd('Homepage');
-            return new RedirectResponse($this->router->generate('app_login'));
+            return new RedirectResponse($this->router->generate('product_index'));
         }
 
         /**

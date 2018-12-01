@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -97,9 +98,7 @@ class User implements UserInterface
     {
 //        $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-//        var_dump($roles);
         $roles[] = 'ROLE_USER';
-//        dd();
 //die;
         return $roles;
     }
