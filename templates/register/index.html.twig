@@ -1,35 +1,120 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
+{% block stylesheets %}
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+
+{% endblock %}
 
 {% block body %}
-    <style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px/1.5 sans-serif;
-        }
 
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-    </style>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="login100-more"></div>
 
-    <div>
-        {{ form_start(form) }}
-        {{ form_row(form.last_name) }}
-        {{ form_row(form.first_name) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.plainPassword.first) }}
-        {{ form_row(form.plainPassword.second) }}
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                {{ form_start(form, {'method': 'POST'}) }}
+                <span class="login100-form-title p-b-59">
+						Sign Up
+					</span>
 
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                        {{ form_row(form.last_name, { 'attr': { 'class': 'input100','placeholder': 'Last Name...' }} ) }}
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Username is required">
+                        {{ form_row(form.first_name, { 'attr': { 'class': 'input100','placeholder': 'First Name...' }} ) }}
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        {{ form_row(form.email, { 'attr': { 'class': 'input100','placeholder': 'Email address...' }} ) }}
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        {{ form_row(form.plainPassword.first, { 'attr': { 'class': 'input100','placeholder': 'Password' }} ) }}
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
+                        {{ form_row(form.plainPassword.second, { 'attr': { 'class': 'input100','placeholder': 'Repeat Password' }} ) }}
+                    </div>
+
+                    <div class="flex-m w-full p-b-33">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+								<span class="txt1">
+									I agree to the
+									<a href="#" class="txt2 hov1">
+										Terms of User
+									</a>
+								</span>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit">
+                                Sign Up
+                            </button>
+                        </div>
+                        {{ form_end(form) }}
+                        <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                            Sign in
+                            <i class="fa fa-long-arrow-right m-l-5"></i>
+                        </a>
+                    </div>
+            </div>
+        </div>
     </div>
 
     <button type="submit">Register!</button>
-    {{ form_end(form) }}
+
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
 
 {% endblock %}
