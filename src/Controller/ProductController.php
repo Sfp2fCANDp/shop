@@ -25,6 +25,7 @@ class ProductController extends AbstractController
         return $this->render('product/index.html.twig', ['products' => $productRepository->findAll()]);
     }
 
+
     /**
      * @Route("/new", name="product_new", methods="GET|POST")
      */
@@ -32,7 +33,6 @@ class ProductController extends AbstractController
     {
         //dd($this->findAll());
         $product = new Product();
-        $category = new Category();
 
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
