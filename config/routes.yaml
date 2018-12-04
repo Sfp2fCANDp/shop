@@ -1,6 +1,6 @@
-##index:
-##    path: /
-##    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\ProductController::index
 ## config/routes.yaml
 #
 ## load some routes - one should ultimately have the path "/app"
