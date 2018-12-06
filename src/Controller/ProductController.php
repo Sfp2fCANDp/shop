@@ -12,6 +12,8 @@
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
     /**
      * @Route("/product")
@@ -39,6 +41,19 @@
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
+//                $file = $form->get('images')->getData();
+
+                $file = $form->get('images')->getData();
+
+                $uploads_directory = $this->getParameter('uploads_directory');
+
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+//                dd($file);
+                $file->move(
+                    $uploads_directory,
+                    $filename
+                );
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($product);
                 $em->flush();
@@ -54,9 +69,8 @@
 
         /**
          * @Route("/{id}", name="product_show", methods="GET")
-         * @Entity("product", expr="repository.find(id)")
          */
-        public function showAction(Product $product): Response
+        public function show(Product $product): Response
         {
             return $this->render('product/show.html.twig', ['product' => $product]);
         }
@@ -96,25 +110,15 @@
         }
 
         /**
-         * @Route("/search", name="ajax_search", methods="GET")
+         * @Route("/search", name="ajax_search", methods="POST|GET")
          */
-        public function searchAction(Request $request)
+        public function search(Request $request): Response
         {
-            var_dump('text');
             $em = $this->getDoctrine()->getManager();
-
             $requestString = $request->get('q');
-
             $products = $em->getRepository('App:Product')->findProductsByString($requestString);
 
-
-            if (!$products) {
-                $result['products']['error'] = "No records found";
-            } else {
-                $result['products'] = $this->getRealProducts($products);
-            }
-
-            return new Response(json_encode($result));
+            return $this->render('product/product_render.html.twig', ['products' => $products]);
         }
 
         public function getRealProducts($products){
