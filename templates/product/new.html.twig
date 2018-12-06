@@ -1,11 +1,104 @@
 {% extends 'base.html.twig' %}
 
+
+{% block stylesheets %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+
+{% endblock %}
+
 {% block title %}New Product{% endblock %}
 
 {% block body %}
-    <h1>Create new Product</h1>
 
-    {{ include('product/_form.html.twig') }}
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url({{ asset('images/bg-01.jpg') }});">
+            <div class="login100-more"></div>
 
-    <a href="{{ path('product_index') }}">back to list</a>
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                {{ form_start(form, {'method': 'POST'}) }}
+                <span class="login100-form-title p-b-59">
+						New Product
+					</span>
+
+                <div class="wrap-input100">
+                    {{ form_row(form.price, { 'attr': { 'class': 'input100','placeholder': 'Price...' }} ) }}
+                </div>
+
+                <div class="wrap-input100">
+                    {{ form_row(form.name, { 'attr': { 'class': 'input100','placeholder': 'Name...' }} ) }}
+                </div>
+
+                <div class="wrap-input100">
+                    {{ form_row(form.description, { 'attr': { 'class': 'input100','placeholder': 'Description...' }} ) }}
+                </div>
+
+                <div class="wrap-input100">
+                    {{ form_row(form.category, { 'attr': { 'class': 'input100','placeholder': 'Category' }} ) }}
+                </div>
+
+
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit">
+                            Done!
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                    <a href="{{ path('product_index') }}" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                        CANCEL
+                        <i class="fa fa-long-arrow-right m-l-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit">Done!</button>
+
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
 {% endblock %}

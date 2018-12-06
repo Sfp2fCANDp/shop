@@ -619,7 +619,7 @@
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href=".">Shop</a></li>
                                     <li><a href="single-product-details.html">Product Details</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="blog.html">Blog</a></li>
@@ -896,7 +896,12 @@
                                 <div class="product-topbar d-flex align-items-center justify-content-between">
                                     <!-- Total Products -->
                                     <div class="total-products">
-                                        <p><span>186</span> products found</p>
+                                        <p><span>{{ products|length }}</span> products found</p>
+                                    </div>
+                                    <div>
+                                        <a href="{{ path('product_new') }}">
+                                            <button type="submit" value="5" class="btn essence-btn">Create new</button>
+                                        </a>
                                     </div>
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
@@ -915,247 +920,9 @@
                             </div>
                         </div>
 
+
+
                         <div class="row">
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-1.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-2.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Product Badge -->#}
-                                        {#<div class="product-badge offer-badge">#}
-                                            {#<span>-30%</span>#}
-                                        {#</div>#}
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="{{ asset('single-product-details.html') }}">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price"><span class="old-price">$75.00</span> $55.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-2.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-3.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-3.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-4.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Product Badge -->#}
-                                        {#<div class="product-badge new-badge">#}
-                                            {#<span>New</span>#}
-                                        {#</div>#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-4.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-5.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-5.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-6.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Product Badge -->#}
-                                        {#<div class="product-badge offer-badge">#}
-                                            {#<span>-30%</span>#}
-                                        {#</div>#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price"><span class="old-price">$75.00</span> $55.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-6.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-7.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-
-                            {#<tr>#}
-                                {#<td></td>#}
-                                {#<td>{{ product.price }}</td>#}
-                                {#<td>{{ product.name }}</td>#}
-                                {#<td>{{ product.description }}</td>#}
-                                {#<td>#}
-                                    {#<a href="{{ path('product_show', {'id': product.id}) }}">show</a>#}
-                                    {#<a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>#}
-                                {#</td>#}
-                            {#</tr>#}
-                            {#{% else %}#}
-                            {#<tr>#}
-                                {#<td colspan="5">no records found</td>#}
-                            {#</tr>#}
 
                             <!-- Single Product -->
                             {% for product in products %}
@@ -1182,7 +949,8 @@
                                         <!-- Product Name (Description) -->
                                         <div class="product-description">
                                             <span>topshop</span>
-                                            <a href="single-product-details.html">
+                                            <a href="{{ product.id }}">
+                                            {#<a href="#">#}
                                                 <h6>{{ product.name }}</h6>
                                             </a>
                                             <p class="product-price">${{ product.price }}.00</p>
@@ -1199,75 +967,6 @@
                                 </div>
                             {% endfor %}
 
-                            <!-- Single Product -->
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-8.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-9.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                            {#<!-- Single Product -->#}
-                            {#<div class="col-12 col-sm-6 col-lg-4">#}
-                                {#<div class="single-product-wrapper">#}
-                                    {#<!-- Product Image -->#}
-                                    {#<div class="product-img">#}
-                                        {#<img src="{{ asset('img/product-img/product-9.jpg') }}" alt="">#}
-                                        {#<!-- Hover Thumb -->#}
-                                        {#<img class="hover-img" src="{{ asset('img/product-img/product-1.jpg') }}"#}
-                                             {#alt="">#}
-
-                                        {#<!-- Favourite -->#}
-                                        {#<div class="product-favourite">#}
-                                            {#<a href="#" class="favme fa fa-heart"></a>#}
-                                        {#</div>#}
-                                    {#</div>#}
-
-                                    {#<!-- Product Description -->#}
-                                    {#<div class="product-description">#}
-                                        {#<span>topshop</span>#}
-                                        {#<a href="single-product-details.html">#}
-                                            {#<h6>Knot Front Mini Dress</h6>#}
-                                        {#</a>#}
-                                        {#<p class="product-price">$80.00</p>#}
-
-                                        {#<!-- Hover Content -->#}
-                                        {#<div class="hover-content">#}
-                                            {#<!-- Add to Cart -->#}
-                                            {#<div class="add-to-cart-btn">#}
-                                                {#<a href="#" class="btn essence-btn">Add to Cart</a>#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
 
                         </div>
                     </div>
@@ -1380,36 +1079,6 @@
 
 
 
-
-
-    <h1>Product index</h1>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Price</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
-
-    <a href="{{ path('product_new') }}">Create new</a>
-
-    <h1>Create new Review</h1>
-
-
-    <button class="btn">{{ button_label|default('Save') }}</button>
-
-
-    <a href="{{ path('review_index') }}">back to list</a>
-
-
     <!-- ##### Footer Area End ##### -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
@@ -1424,6 +1093,60 @@
     <script src="{{ asset('js/classy-nav.min.js') }}"></script>
     <!-- Active js -->
     <script src="{{ asset('js/active.js') }}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            console.log("START");
+            var searchRequest = null;
+            $("#headerSearch").keyup(function() {
+                var minlength = 3;
+                var that = this;
+                var value = $(this).val();
+                console.log(value);
+                console.log("AFTER VALUE");
+                var entitySelector = $("#entitiesNav").html('');
+                console.log(entitySelector);
+                console.log("AFTER ESEL");
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "GET",
+                        url: "{{ path('ajax_search') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+                            if (value==$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key == 'products') {
+                                            if (id != 'error') {
+                                                for (var i = 0; i < value.length; i++)
+                                                {
+                                                    entitySelector.append('<div class="col-12 col-sm-6 col-lg-4"> <div class="single-product-wrapper"> <div class="product-img"> ' +
+                                                        '<img src="' + asset('img/product-img/product-7.jpg') + '" alt=""> <img class="hover-img" src="' + asset('img/product-img/product-8.jpg') +
+                                                        '" alt=""> + <div class="product-badge new-badge"> <span>New' + value.id + '</span> </div> <div class="product-favourite">' +
+                                                        '<a href="#" class="favme fa fa-heart"></a> </div> </div> <div class="product-description"> <span>topshop</span> <a href="' +
+                                                        path(product_show) + '"><h6>' + value.name + '</h6> </a> <p class="product-price">$' + value.price + '.00</p> <div class="hover-content">' +
+                                                        '<div class="add-to-cart-btn"> <a href="#" class="btn essence-btn">Add to Cart</a> </div> </div> </div> </div> </div>');
+                                                }
+                                            } else {
+                                                entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 
 {% endblock %}
