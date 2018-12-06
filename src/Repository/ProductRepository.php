@@ -21,14 +21,27 @@ class ProductRepository extends ServiceEntityRepository
 
     public function findProductsByString($str)
     {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT p
-                FROM App:Product pad
+        $products = [];
+        if($str != '') {
+            $products = $this->getEntityManager()
+                ->createQuery(
+                    'SELECT p
+                FROM App:Product p
                 WHERE p.name LIKE :str'
-            )
-            ->setParameter('str', '%'.$str.'%')
-            ->getResult();
+                )
+                ->setParameter('str', '%'.$str.'%')
+                ->getResult();
+
+        } else {
+            $products = $this->getEntityManager()
+                ->createQuery(
+                    'SELECT p
+                FROM App:Product p'
+                )
+                ->getResult();
+        }
+
+        return $products;
     }
 
 //    /**

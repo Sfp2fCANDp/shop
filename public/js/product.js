@@ -15,16 +15,14 @@ jQuery(document).ready(function () {
 
         console.log(entitySelector);
         console.log("AFTER ESEL");
-
+        // var path = "{{path(ajax_search)}}";
         if (value.length >= minlength) {
             if (searchRequest != null)
                 searchRequest.abort();
             searchRequest = $.ajax({
                 type: "GET",
-                url: "search",
-                data: {
-                    'q': value
-                },
+                url: "{{path(ajax_search)}}",
+                data: { name: value },
                 dataType: "text",
                 success: function (msg) {
                     //we need to check if the value is the same
