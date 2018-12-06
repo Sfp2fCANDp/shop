@@ -11,6 +11,7 @@
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
     /**
      * @Route("/product")
@@ -53,8 +54,9 @@
 
         /**
          * @Route("/{id}", name="product_show", methods="GET")
+         * @Entity("product", expr="repository.find(id)")
          */
-        public function show(Product $product): Response
+        public function showAction(Product $product): Response
         {
             return $this->render('product/show.html.twig', ['product' => $product]);
         }
@@ -94,10 +96,11 @@
         }
 
         /**
-         * @Route("/Search", name="ajax_search", methods="GET")
+         * @Route("/search", name="ajax_search", methods="GET")
          */
         public function searchAction(Request $request)
         {
+            var_dump('text');
             $em = $this->getDoctrine()->getManager();
 
             $requestString = $request->get('q');
@@ -121,15 +124,5 @@
             }
 
             return $realProducts;
-        }
-
-        public function viewAction(Request $request, $entityId)
-        {
-            $entity = $this->getRepo()->find($entityId);
-            return $this->render($this->getDetailView(), [
-                'edit_url' => $this->getEditPathName(),
-                'twig_param_name' => $this->getTwigParamName(),
-                'entity' => $entity
-            ]);
         }
     }
